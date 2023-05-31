@@ -76,8 +76,8 @@ public class UsuarioController {
 	}
 	//elimar
 	
-	@DeleteMapping("/{id}")
-	public ResponseEntity<?> delete (@PathVariable(value = "id") Long codigo){
+	@DeleteMapping("/{codigo}")
+	public ResponseEntity<?> delete (@PathVariable(value = "codigo") Long codigo){
 		if(!servipoke.findById(codigo).isPresent()) {
 			return ResponseEntity.notFound().build();
 		}

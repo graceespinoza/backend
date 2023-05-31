@@ -30,9 +30,9 @@ public class ReservaInmu implements Reserva_Services{
 	}
 
 	@Override
-	public Reserva save(Reserva id_reserva) {
+	public Reserva save(Reserva poke) {
 		// TODO Auto-generated method stub
-		return reserepol.save(id_reserva);
+		return reserepol.save(poke);
 	}
 
 	@Override
@@ -47,12 +47,18 @@ public class ReservaInmu implements Reserva_Services{
 		List<Reserva> respuesta= new ArrayList<>();
 		List<Reserva> poki = reserepol.findAll();
 		for(int i=0; i<poki.size(); i++) {
-			if(poki.get(i).getUsuario().getCodigo()==id_reserva){
+			if(poki.get(i).getInmueble().getId_inmueble()==id_reserva){
 				respuesta.add(poki.get(i));
 				}
 			
 		}
 		return respuesta;
+	}
+
+	@Override
+	public List<Reserva> findAlla() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 	

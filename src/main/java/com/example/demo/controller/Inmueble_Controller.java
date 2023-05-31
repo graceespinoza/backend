@@ -9,6 +9,7 @@ import java.util.stream.StreamSupport;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,7 +23,8 @@ import com.example.demo.entity.Inmueble;
 import com.example.demo.service.Inmuebles_Services;
 
 @RestController
-@RequestMapping("/inmueble")
+@RequestMapping("/inmuebles")
+@CrossOrigin(origins = "*")
 public class Inmueble_Controller {
 	@Autowired 
 	Inmuebles_Services inmuservis;
@@ -31,7 +33,7 @@ public class Inmueble_Controller {
 	public ResponseEntity<Inmueble> save(@RequestBody Inmueble poke){
 		try {
 			Inmueble pokeguardad = inmuservis.save(poke);
-			return ResponseEntity.created(new URI("/inmueble" + pokeguardad.getId_inmueble())).body(pokeguardad);
+			return ResponseEntity.created(new URI("/inmuebles" + pokeguardad.getId_inmueble())).body(pokeguardad);
 		}catch(Exception e) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
 		}

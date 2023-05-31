@@ -29,9 +29,9 @@ public class InmuebleImpl implements Inmuebles_Services{
 	}
 
 	@Override
-	public Inmueble save(Inmueble id_inmueble) {
+	public Inmueble save(Inmueble poke) {
 		// TODO Auto-generated method stub
-		return inmurepo.save(id_inmueble);
+		return inmurepo.save(poke);
 	}
 
 	@Override
@@ -42,19 +42,14 @@ public class InmuebleImpl implements Inmuebles_Services{
 
 	@Override
 	public List<Inmueble> findAllByInmueble(Long id_inmueble) {
-		// TODO Auto-generated method stub
-		List<Inmueble> respuesta= new ArrayList<>();
-		List<Inmueble> poki = inmurepo.findAll();
-		for(int i=0; i<poki.size(); i++) {
-			if(poki.get(i).getUsuarios().getCodigo()==id_inmueble){
-				respuesta.add(poki.get(i));
-				}
-			
-		}
-		return respuesta;
+	
+		return null;
 	}
-	
-	
+
+	@Override
+	public List<Inmueble> findAlla() {
+		return null;
 
 
+	}
 }

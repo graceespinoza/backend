@@ -44,10 +44,6 @@ public class Reserva implements Serializable{
 	private Inmueble inmueble;
 	
 	
-	@ManyToOne
-	@JoinColumn(name="usuario")
-	private Usuarios usuario;
-
 	
 	
 
@@ -58,8 +54,7 @@ public class Reserva implements Serializable{
 
 
 
-	public Reserva(Long id_reserva, String tipo, String estado, String hora, Date fecha, Inmueble inmueble,
-			Usuarios usuario) {
+	public Reserva(Long id_reserva, String tipo, String estado, String hora, Date fecha, Inmueble inmueble) {
 		super();
 		this.id_reserva = id_reserva;
 		this.tipo = tipo;
@@ -67,7 +62,6 @@ public class Reserva implements Serializable{
 		this.hora = hora;
 		this.fecha = fecha;
 		this.inmueble = inmueble;
-		this.usuario = usuario;
 	}
 
 
@@ -157,17 +151,6 @@ public class Reserva implements Serializable{
 
 
 
-	public Usuarios getUsuario() {
-		return usuario;
-	}
-
-
-
-
-	public void setUsuario(Usuarios usuario) {
-		this.usuario = usuario;
-	}
-	
 	
 	
 	

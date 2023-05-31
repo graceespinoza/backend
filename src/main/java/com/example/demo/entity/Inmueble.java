@@ -8,10 +8,7 @@ import jakarta.persistence.*;
 @Table(name="inmueble")
 public class Inmueble implements Serializable{
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+	
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,6 +23,8 @@ public class Inmueble implements Serializable{
 	@Column(name="precio", length=50)
 	private int precio;
 	
+	@Column(name="estado", length=1)
+	private String estado;
 	
 	@Column(name="tipo_inmuble", length=150)
 	private String tipo_inmuble;
@@ -41,15 +40,33 @@ public class Inmueble implements Serializable{
 		super();
 	}
 
-	public Inmueble(Long id_inmueble, String nombre, String direccion, int precio, String tipo_inmuble, Usuarios usuarios) {
+	
+
+	public Inmueble(Long id_inmueble, String nombre, String direccion, int precio, String estado, String tipo_inmuble,
+			Usuarios usuarios) {
 		super();
 		this.id_inmueble = id_inmueble;
 		this.nombre = nombre;
 		this.direccion = direccion;
 		this.precio = precio;
+		this.estado = estado;
 		this.tipo_inmuble = tipo_inmuble;
 		this.usuarios = usuarios;
 	}
+
+
+
+	public String getEstado() {
+		return estado;
+	}
+
+
+
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
+
+
 
 	public Long getId_inmueble() {
 		return id_inmueble;

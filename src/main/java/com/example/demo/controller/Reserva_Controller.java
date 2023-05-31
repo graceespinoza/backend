@@ -9,6 +9,7 @@ import java.util.stream.StreamSupport;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,27 +19,32 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.demo.entity.Inmueble;
 import com.example.demo.entity.Reserva;
 import com.example.demo.entity.Usuarios;
 import com.example.demo.service.Reserva_Services;
 
 @RestController
-@RequestMapping("/reserva")
+@RequestMapping("/reservas")
+@CrossOrigin(origins = "*")
 public class Reserva_Controller {
 	
 	@Autowired 
 	Reserva_Services reseservi;
 	
-	
 	@PostMapping("/add")
 	public ResponseEntity<Reserva> save(@RequestBody Reserva poke){
+		
 		try {
 			Reserva pokeguardad = reseservi.save(poke);
-			return ResponseEntity.created(new URI("/reserva" + pokeguardad.getId_reserva())).body(pokeguardad);
+			return ResponseEntity.created(new URI("/reservas" + pokeguardad.getId_reserva())).body(pokeguardad);
 		}catch(Exception e) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
 		}
 	}
+
+	
+	
 	
 	@GetMapping("/{id}")
 	public ResponseEntity<?> obtener (@PathVariable (value = "id") Long id_reserva){
